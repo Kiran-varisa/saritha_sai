@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engagement & Ring Ceremony | Sai Kumar &amp; Saritha</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tone.js for soft celebratory acoustic ambiance -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        burgundy: {
+                            900: '#25060f',
+                            800: '#3D0A19',
+                            700: '#5A1127',
+                            600: '#7B1D39',
+                            100: '#FDF2F4'
+                        },
+                        rosewood: {
+                            DEFAULT: '#4A1224',
+                            light: '#6B1B34'
+                        },
+                        gold: {
+                            50: '#FDFBF7',
+                            100: '#F9F4E8',
+                            200: '#F0E2C4',
+                            300: '#E4CC98',
+                            400: '#D5B36A',
+                            500: '#C59B3F',
+                            600: '#A9802E',
+                            700: '#866322'
+                        },
+                        champagne: '#FBF8F3',
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'luxury': '0 20px 50px -12px rgba(61, 10, 25, 0.15)',
+                        'gold-glow': '0 0 25px rgba(213, 179, 106, 0.35)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FBF8F3;
+            color: #2D2226;
+            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #ECC880 0%, #B88628 50%, #E8C175 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-pattern {
+            background-image: radial-gradient(rgba(197, 155, 63, 0.10) 1px, transparent 0);
+            background-size: 28px 28px;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        .animate-float {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FBF8F3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D5B36A;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-pattern antialiased text-stone-800 selection:bg-gold-200 selection:text-burgundy-900">
+
+    <!-- Floating Audio & Quick Action Ribbon -->
+    <header class="fixed top-4 left-0 right-0 z-50 px-4 pointer-events-none">
+        <div class="max-w-4xl mx-auto flex items-center justify-between pointer-events-auto">
+            <!-- Brand Monogram -->
+            <a href="#hero" class="flex items-center gap-2 bg-white/85 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-md border border-gold-300/50 text-burgundy-800 transition hover:scale-105">
+                <span class="font-serif text-lg font-bold tracking-widest text-burgundy-800">S &amp; S</span>
+                <span class="text-gold-500 text-xs">✦</span>
+                <span class="text-xs uppercase tracking-wider font-semibold text-stone-600 hidden sm:inline">19.12.2026</span>
+            </a>
+
+            <!-- Quick Controls: Music + RSVP -->
+            <div class="flex items-center gap-2">
+                <!-- Music Ambiance Button -->
+                <button id="musicToggleBtn" onclick="toggleBackgroundMusic()" class="flex items-center gap-2 bg-white/85 backdrop-blur-md px-3.5 py-2 rounded-full shadow-md border border-gold-300/60 text-xs font-medium text-burgundy-800 hover:bg-gold-50 transition" title="Play auspicious morning melodies">
+                    <svg id="musicIconOn" class="w-4 h-4 text-gold-600 hidden animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                    </svg>
+                    <svg id="musicIconOff" class="w-4 h-4 text-stone-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM3 3l18 18"/>
+                    </svg>
+                    <span id="musicBtnLabel" class="hidden sm:inline">Music</span>
+                </button>
+
+                <!-- Floating Quick RSVP -->
+                <a href="#rsvp" class="bg-gradient-to-r from-burgundy-800 to-burgundy-700 hover:from-burgundy-700 hover:to-burgundy-600 text-white text-xs md:text-sm font-medium px-4 py-2 rounded-full shadow-lg hover:shadow-gold-glow transition-all flex items-center gap-1.5 border border-gold-400/40">
+                    <span>RSVP</span>
+                    <span class="text-gold-300">→</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Canvas for subtle floating sparkles -->
+    <canvas id="sparkleCanvas" class="fixed inset-0 pointer-events-none z-10 w-full h-full opacity-70"></canvas>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="w-[500px] h-[500px] md:w-[750px] md:h-[750px] rounded-full bg-gradient-to-tr from-rose-100/40 via-gold-100/35 to-amber-50/20 blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-3xl mx-auto text-center z-20">
+            <!-- Ornamental Crest -->
+            <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/75 backdrop-blur-md border border-gold-300/70 shadow-sm mb-6 animate-float">
+                <span class="text-gold-600 text-sm">✦</span>
+                <span class="text-xs uppercase tracking-[0.25em] text-burgundy-800 font-semibold">Together With Their Families</span>
+                <span class="text-gold-600 text-sm">✦</span>
+            </div>
+
+            <p class="font-serif italic text-2xl md:text-3xl text-stone-600 mb-2">
+                We're Getting Engaged!
+            </p>
+
+            <!-- Couple's Names -->
+            <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-burgundy-900 tracking-tight leading-none mb-4">
+                Sai Kumar <span class="gold-gradient-text italic font-light">&amp;</span> Saritha
+            </h1>
+
+            <p class="text-sm md:text-base font-light text-stone-600 max-w-lg mx-auto tracking-wide mb-8">
+                Cordially invite you to grace the auspicious Engagement &amp; Ring Ceremony as they embark on this sacred journey of love and togetherness.
+            </p>
+
+            <!-- Key Event Badges: Date, Time, Venue -->
+            <div class="flex flex-wrap items-center justify-center gap-3 md:gap-4 text-sm text-stone-700 mb-10 font-medium">
+                <div class="flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-gold-200 shadow-sm">
+                    <svg class="w-4 h-4 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <span>Saturday, December 19, 2026</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-gold-200 shadow-sm">
+                    <svg class="w-4 h-4 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>08:00 AM Onwards</span>
+                </div>
+                <a href="https://www.bing.com/maps?q=Brindavanam+Function+Halls&amp;ss=ypid.YN873A9480D24E594C&amp;name=Brindavanam+Function+Halls&amp;cp=18.2810001373291~83.90238952636719&amp;lvl=15&amp;ppois=18.2810001373291_83.90238952636719_Brindavanam+Function+Halls&amp;style=r" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-gold-200 shadow-sm hover:border-gold-400 hover:bg-gold-50/50 transition">
+                    <svg class="w-4 h-4 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    <span>Brindavanam Function Halls</span>
+                </a>
+            </div>
+
+            <!-- COUNTDOWN TIMER -->
+            <div class="bg-white/75 backdrop-blur-xl border border-gold-300/70 rounded-3xl p-6 md:p-8 max-w-xl mx-auto shadow-luxury mb-10">
+                <p class="text-xs uppercase tracking-[0.2em] text-gold-700 font-semibold mb-4 text-center">
+                    Counting Down to the Muhurtham
+                </p>
+                <div class="grid grid-cols-4 gap-3 text-center">
+                    <div class="bg-gradient-to-b from-stone-50 to-gold-50/50 p-3 rounded-2xl border border-gold-200/60">
+                        <span id="days" class="block font-serif text-2xl sm:text-4xl font-bold text-burgundy-900">00</span>
+                        <span class="text-[10px] sm:text-xs uppercase tracking-wider text-stone-500 font-medium">Days</span>
+                    </div>
+                    <div class="bg-gradient-to-b from-stone-50 to-gold-50/50 p-3 rounded-2xl border border-gold-200/60">
+                        <span id="hours" class="block font-serif text-2xl sm:text-4xl font-bold text-burgundy-900">00</span>
+                        <span class="text-[10px] sm:text-xs uppercase tracking-wider text-stone-500 font-medium">Hours</span>
+                    </div>
+                    <div class="bg-gradient-to-b from-stone-50 to-gold-50/50 p-3 rounded-2xl border border-gold-200/60">
+                        <span id="minutes" class="block font-serif text-2xl sm:text-4xl font-bold text-burgundy-900">00</span>
+                        <span class="text-[10px] sm:text-xs uppercase tracking-wider text-stone-500 font-medium">Mins</span>
+                    </div>
+                    <div class="bg-gradient-to-b from-stone-50 to-gold-50/50 p-3 rounded-2xl border border-gold-200/60">
+                        <span id="seconds" class="block font-serif text-2xl sm:text-4xl font-bold text-gold-600">00</span>
+                        <span class="text-[10px] sm:text-xs uppercase tracking-wider text-stone-500 font-medium">Secs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a href="#rsvp" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-burgundy-800 to-burgundy-700 text-white font-medium text-sm shadow-lg hover:shadow-gold-glow hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 border border-gold-400/40">
+                    <svg class="w-4 h-4 text-gold-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    <span>RSVP Attendance</span>
+                </a>
+                <button onclick="addToCalendarModal()" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/90 hover:bg-gold-50 text-burgundy-900 font-medium text-sm border border-gold-300 shadow-sm hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                    <span>Add to Calendar</span>
+                </button>
+                <button onclick="openShareSheet()" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/90 hover:bg-gold-50 text-stone-700 font-medium text-sm border border-stone-200 shadow-sm hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                    <span>Share Invite</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLESSINGS & STORY NOTE -->
+    <section class="py-16 px-4">
+        <div class="max-w-2xl mx-auto text-center">
+            <span class="text-gold-600 font-serif text-3xl">❦</span>
+            <h2 class="font-serif text-3xl md:text-4xl text-burgundy-900 mt-2 mb-4 font-normal">A Celebration of Two Destinies</h2>
+            <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6"></div>
+            <p class="text-stone-600 leading-relaxed font-light text-base md:text-lg mb-6">
+                With the grace of the Almighty and the blessings of our parents, Sai Kumar &amp; Saritha unite their hearts and lives. We invite our cherished friends and family to shower their love and blessings upon us on this joyous day.
+            </p>
+            <p class="font-serif italic text-burgundy-800 text-lg">
+                "Where love and destiny meet, forever begins."
+            </p>
+        </div>
+    </section>
+
+    <!-- EVENT SCHEDULE / TIMELINE -->
+    <section id="schedule" class="py-20 px-4 bg-gradient-to-b from-transparent via-gold-50/40 to-transparent">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-[0.25em] text-gold-700 font-semibold block mb-2">Order of Events</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-burgundy-900 font-normal">The Celebration Schedule</h2>
+                <p class="text-stone-500 text-sm mt-2">An auspicious morning of rituals, rings, blessings, and traditional feast</p>
+                <div class="w-20 h-0.5 bg-gold-400 mx-auto mt-4"></div>
+            </div>
+
+            <div class="relative border-l-2 border-gold-300/60 ml-4 md:ml-32 space-y-10 pl-6 md:pl-10">
+                <!-- 07:00 AM -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1.5 w-6 h-6 rounded-full bg-white border-2 border-gold-500 flex items-center justify-center group-hover:scale-125 transition-transform shadow-md">
+                        <div class="w-2 h-2 rounded-full bg-burgundy-800"></div>
+                    </div>
+                    <div class="hidden md:block absolute -left-36 top-1 text-right w-24">
+                        <span class="text-sm font-bold text-burgundy-900 block">07:00 AM</span>
+                        <span class="text-xs text-stone-500">Welcome</span>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-gold-200/80 shadow-sm hover:shadow-luxury transition-all">
+                        <span class="md:hidden text-xs font-semibold text-gold-700 uppercase tracking-wider block mb-1">07:00 AM &bull; Welcome</span>
+                        <h3 class="font-serif text-2xl text-burgundy-900 font-semibold mb-1 flex items-center gap-2">
+                            <span>Arrival &amp; Traditional Welcome</span>
+                            <span class="text-xs font-sans px-2.5 py-0.5 rounded-full bg-gold-100 text-gold-800 font-normal">Breakfast</span>
+                        </h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Welcoming guests and family members with a traditional morning breakfast, warm filter coffee, and refreshments.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 08:00 AM: Sacred Ring Exchange (Muhurtham) -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1.5 w-6 h-6 rounded-full bg-gold-400 border-2 border-white ring-2 ring-gold-500 flex items-center justify-center group-hover:scale-125 transition-transform shadow-md">
+                        <span class="text-[10px] text-burgundy-900 font-bold">💍</span>
+                    </div>
+                    <div class="hidden md:block absolute -left-36 top-1 text-right w-24">
+                        <span class="text-sm font-bold text-burgundy-900 block">08:00 AM</span>
+                        <span class="text-xs text-stone-500 font-semibold text-gold-700">Muhurtham</span>
+                    </div>
+                    <div class="bg-gradient-to-br from-white via-gold-50/50 to-white p-6 rounded-2xl border-2 border-gold-300 shadow-luxury transition-all">
+                        <span class="md:hidden text-xs font-semibold text-gold-700 uppercase tracking-wider block mb-1">08:00 AM &bull; Muhurtham</span>
+                        <h3 class="font-serif text-2xl text-burgundy-900 font-semibold mb-1 flex items-center gap-2">
+                            <span>The Sacred Ring Exchange Ceremony</span>
+                            <span class="text-xs font-sans px-2.5 py-0.5 rounded-full bg-burgundy-700 text-white font-normal">Main Stage</span>
+                        </h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Auspicious rituals, family blessings, and the formal exchange of engagement rings between Sai Kumar &amp; Saritha.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 11:00 AM: Family Blessings & Photography -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1.5 w-6 h-6 rounded-full bg-white border-2 border-gold-500 flex items-center justify-center group-hover:scale-125 transition-transform shadow-md">
+                        <div class="w-2 h-2 rounded-full bg-burgundy-800"></div>
+                    </div>
+                    <div class="hidden md:block absolute -left-36 top-1 text-right w-24">
+                        <span class="text-sm font-bold text-burgundy-900 block">11:00 AM</span>
+                        <span class="text-xs text-stone-500">Blessings</span>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-gold-200/80 shadow-sm hover:shadow-luxury transition-all">
+                        <span class="md:hidden text-xs font-semibold text-gold-700 uppercase tracking-wider block mb-1">11:00 AM &bull; Blessings &amp; Photos</span>
+                        <h3 class="font-serif text-2xl text-burgundy-900 font-semibold mb-1 flex items-center gap-2">
+                            <span>Family Blessings &amp; Stage Photography</span>
+                            <span class="text-xs font-sans px-2.5 py-0.5 rounded-full bg-gold-100 text-gold-800 font-normal">Stage</span>
+                        </h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Greetings, photo sessions, and congratulations with the couple, creating cherished memories with relatives and friends.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 12:00 PM: Festive Lunch -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1.5 w-6 h-6 rounded-full bg-white border-2 border-gold-500 flex items-center justify-center group-hover:scale-125 transition-transform shadow-md">
+                        <div class="w-2 h-2 rounded-full bg-burgundy-800"></div>
+                    </div>
+                    <div class="hidden md:block absolute -left-36 top-1 text-right w-24">
+                        <span class="text-sm font-bold text-burgundy-900 block">12:00 PM</span>
+                        <span class="text-xs text-stone-500">Lunch</span>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-gold-200/80 shadow-sm hover:shadow-luxury transition-all">
+                        <span class="md:hidden text-xs font-semibold text-gold-700 uppercase tracking-wider block mb-1">12:00 PM &bull; Festive Lunch</span>
+                        <h3 class="font-serif text-2xl text-burgundy-900 font-semibold mb-1">
+                            <span>Grand Festive Lunch</span>
+                        </h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            A lavish traditional celebratory feast served with authentic delicacies, assortments of sweets, and refreshments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VENUE & ESSENTIAL DETAILS -->
+    <section id="venue" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-[0.25em] text-gold-700 font-semibold block mb-2">Location &amp; Directions</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-burgundy-900 font-normal">The Venue</h2>
+                <div class="w-20 h-0.5 bg-gold-400 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <!-- Venue Card -->
+                <div class="bg-white/80 backdrop-blur-xl border border-gold-300/80 rounded-3xl p-8 shadow-luxury flex flex-col justify-between">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-100 text-gold-800 text-xs font-semibold uppercase tracking-wider mb-4">
+                            <span>Celebration Hall</span>
+                        </div>
+                        <h3 class="font-serif text-3xl text-burgundy-900 mb-2 font-normal">Brindavanam Function Halls</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            Join us at Brindavanam Function Halls for the ceremony, blessings, and festive feast.
+                        </p>
+
+                        <div class="space-y-4 text-sm text-stone-700 mb-8 border-t border-b border-gold-100 py-6">
+                            <div class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-gold-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                <div>
+                                    <span class="font-semibold text-burgundy-900 block">Venue Location</span>
+                                    <span>Brindavanam Function Halls (Coordinates: 18.2810, 83.9024)</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-gold-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
+                                <div>
+                                    <span class="font-semibold text-burgundy-900 block">Parking</span>
+                                    <span>Ample vehicle parking available on premises for all guests.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://www.bing.com/maps?q=Brindavanam+Function+Halls&amp;ss=ypid.YN873A9480D24E594C&amp;name=Brindavanam+Function+Halls&amp;cp=18.2810001373291~83.90238952636719&amp;lvl=15&amp;ppois=18.2810001373291_83.90238952636719_Brindavanam+Function+Halls&amp;style=r&amp;trfc=&amp;FORM=MPSRPL&amp;mepi=0~~Embedded~LargeMapLink" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-3.5 px-6 rounded-2xl bg-burgundy-900 hover:bg-burgundy-800 text-white font-medium text-sm transition-all shadow-md hover:shadow-gold-glow flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4 text-gold-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            <span>Open in Maps</span>
+                        </a>
+                        <button onclick="copyVenueAddress()" class="py-3.5 px-5 rounded-2xl bg-gold-50 hover:bg-gold-100 text-gold-900 border border-gold-300 font-medium text-sm transition flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4 text-gold-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                            <span id="copyAddrLabel">Copy Address</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Attire & Blessings Guide -->
+                <div class="space-y-6 flex flex-col justify-between">
+                    <div class="bg-gradient-to-br from-burgundy-900 to-burgundy-800 text-white rounded-3xl p-8 shadow-luxury border border-gold-400/30">
+                        <div class="w-10 h-10 rounded-full bg-gold-500/20 flex items-center justify-center mb-4 border border-gold-400/40">
+                            <span class="text-gold-300 text-lg">✨</span>
+                        </div>
+                        <h4 class="font-serif text-2xl text-gold-200 mb-2">Dress Code</h4>
+                        <p class="text-xs uppercase tracking-widest text-gold-300 font-bold mb-3">Traditional Festive Attire</p>
+                        <p class="text-stone-200 text-sm leading-relaxed mb-4 font-light">
+                            Traditional Indian / Festive wear (Kurtas, Sarees, Lehengas, or Smart Festive Attire). Warm hues of gold, maroon, yellow, and pastel tones are welcomed.
+                        </p>
+                        <div class="flex items-center gap-2 text-xs text-gold-300/80 italic">
+                            <span>✦</span>
+                            <span>Muhurtham commences promptly at 08:00 AM.</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/80 backdrop-blur-xl border border-gold-200 rounded-3xl p-7 shadow-sm">
+                        <h4 class="font-serif text-xl text-burgundy-900 mb-2">Your Blessings Mean Everything</h4>
+                        <p class="text-stone-600 text-sm leading-relaxed font-light">
+                            Your prayers, heartfelt blessings, and warm company are the greatest gifts we could ever ask for as Sai Kumar and Saritha take this sacred step together.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE RSVP FORM -->
+    <section id="rsvp" class="py-20 px-4 bg-gradient-to-b from-champagne via-gold-50/50 to-champagne">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-xs uppercase tracking-[0.25em] text-gold-700 font-semibold block mb-2">Kindly Respond</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-burgundy-900 font-normal">Confirm Your Presence</h2>
+                <p class="text-stone-500 text-sm mt-2">Please let us know if you can join us by December 10, 2026</p>
+                <div class="w-20 h-0.5 bg-gold-400 mx-auto mt-4"></div>
+            </div>
+
+            <div class="bg-white/90 backdrop-blur-2xl border border-gold-300/90 rounded-3xl p-6 sm:p-10 shadow-luxury relative overflow-hidden">
+                <div class="absolute -top-12 -right-12 w-28 h-28 bg-gold-100 rounded-full blur-xl pointer-events-none"></div>
+
+                <form id="rsvpForm" onsubmit="handleRSVPSubmit(event)" class="space-y-6">
+                    <div>
+                        <label for="guestName" class="block text-xs uppercase tracking-wider text-burgundy-900 font-semibold mb-2">
+                            Your Full Name(s) <span class="text-rose-600">*</span>
+                        </label>
+                        <input type="text" id="guestName" required placeholder="e.g., Rajesh & Family"
+                            class="w-full px-4 py-3.5 rounded-xl border border-stone-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-300/40 outline-none text-stone-800 text-sm bg-stone-50/50 transition">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="guestEmail" class="block text-xs uppercase tracking-wider text-burgundy-900 font-semibold mb-2">
+                                Email Address <span class="text-rose-600">*</span>
+                            </label>
+                            <input type="email" id="guestEmail" required placeholder="name@domain.com"
+                                class="w-full px-4 py-3.5 rounded-xl border border-stone-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-300/40 outline-none text-stone-800 text-sm bg-stone-50/50 transition">
+                        </div>
+                        <div>
+                            <label for="guestPhone" class="block text-xs uppercase tracking-wider text-burgundy-900 font-semibold mb-2">
+                                Phone Number / WhatsApp
+                            </label>
+                            <input type="tel" id="guestPhone" placeholder="+91 98765 43210"
+                                class="w-full px-4 py-3.5 rounded-xl border border-stone-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-300/40 outline-none text-stone-800 text-sm bg-stone-50/50 transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-burgundy-900 font-semibold mb-2">
+                            Will you be attending? <span class="text-rose-600">*</span>
+                        </label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl border-2 cursor-pointer transition border-gold-400 bg-gold-50/60 has-[:checked]:border-burgundy-700 has-[:checked]:bg-burgundy-50/50">
+                                <input type="radio" name="attendance" value="attending" checked class="accent-burgundy-800 w-4 h-4">
+                                <div>
+                                    <span class="block text-xs font-bold text-burgundy-900">Joyfully Accepts</span>
+                                    <span class="text-[11px] text-stone-500">I / We will attend</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl border-2 cursor-pointer transition border-stone-200 bg-stone-50/40 has-[:checked]:border-burgundy-700 has-[:checked]:bg-burgundy-50/50">
+                                <input type="radio" name="attendance" value="declined" class="accent-burgundy-800 w-4 h-4">
+                                <div>
+                                    <span class="block text-xs font-bold text-stone-800">Regretfully Declines</span>
+                                    <span class="text-[11px] text-stone-500">Blessings from afar</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="guestCount" class="block text-xs uppercase tracking-wider text-burgundy-900 font-semibold mb-2">
+                                Total Guests
+                            </label>
+                            <select id="guestCount" class="w-full px-4 py-3.5 rounded-xl border border-stone-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-300/40 outline-none text-stone-800 text-sm bg-stone-50/50 transition">
+                                <option value="1">1 Person</option>
+                                <option value="2" selected>2 Persons</option>
+                                <option value="3">3 Persons</option>
+                                <option value="4">4 Persons</option>
+                                <option value="5+">5+ Family Members</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="dietary" class="block text-xs uppercase tracking-wider text-burgundy-900 font-semibold mb-2">
+                                Notes / Requirements
+                            </label>
+                            <input type="text" id="dietary" placeholder="Pure Veg, Jain, etc."
+                                class="w-full px-4 py-3.5 rounded-xl border border-stone-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-300/40 outline-none text-stone-800 text-sm bg-stone-50/50 transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="guestMessage" class="block text-xs uppercase tracking-wider text-burgundy-900 font-semibold mb-2">
+                            Wishes &amp; Blessings for Sai Kumar &amp; Saritha
+                        </label>
+                        <textarea id="guestMessage" rows="3" placeholder="Leave a heartfelt message or blessing..."
+                            class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-300/40 outline-none text-stone-800 text-sm bg-stone-50/50 transition"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-burgundy-900 via-burgundy-800 to-burgundy-900 hover:from-burgundy-800 hover:to-burgundy-700 text-white font-semibold text-sm tracking-wide shadow-lg hover:shadow-gold-glow transition-all flex items-center justify-center gap-2 border border-gold-400/50">
+                        <span>Send Your RSVP</span>
+                        <span class="text-gold-300">✦</span>
+                    </button>
+                </form>
+
+                <!-- Post-Submission Success Card -->
+                <div id="rsvpSuccessCard" class="hidden text-center py-8">
+                    <div class="w-16 h-16 rounded-full bg-gold-100 text-gold-700 flex items-center justify-center mx-auto mb-4 border-2 border-gold-300 shadow-md">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <span class="text-xs uppercase tracking-[0.2em] text-gold-700 font-semibold block mb-1">Dhanyavadalu!</span>
+                    <h3 id="successGreeting" class="font-serif text-3xl text-burgundy-900 mb-3">RSVP Received with Joy</h3>
+                    <p id="successSummary" class="text-stone-600 text-sm max-w-md mx-auto mb-6">
+                        We have recorded your response. We look forward to celebrating this sacred ceremony with you!
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center gap-3">
+                        <button onclick="addToCalendarModal()" class="px-5 py-2.5 rounded-full bg-burgundy-800 text-white text-xs font-semibold hover:bg-burgundy-700 transition">
+                            Add to Calendar
+                        </button>
+                        <button onclick="resetRSVPForm()" class="px-5 py-2.5 rounded-full bg-stone-100 text-stone-700 text-xs font-semibold hover:bg-stone-200 transition">
+                            Edit Response
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE GUEST WISHES BOARD -->
+    <section class="py-16 px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-8">
+                <span class="text-xs uppercase tracking-[0.2em] text-gold-700 font-semibold block mb-1">Warm Words</span>
+                <h3 class="font-serif text-3xl text-burgundy-900">Blessings &amp; Well Wishes</h3>
+                <p class="text-stone-500 text-xs mt-1">Heartfelt blessings sent by friends &amp; family</p>
+            </div>
+
+            <div id="wishesFeed" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-white/75 backdrop-blur-md p-5 rounded-2xl border border-gold-200/70 shadow-sm">
+                    <p class="font-serif italic text-burgundy-900 text-base mb-2">"Heartiest congratulations to Sai Kumar &amp; Saritha! May your journey ahead be blessed with everlasting happiness and love."</p>
+                    <div class="flex items-center justify-between text-xs text-stone-500">
+                        <span class="font-semibold text-stone-700">Rao &amp; Family</span>
+                        <span>Family</span>
+                    </div>
+                </div>
+
+                <div class="bg-white/75 backdrop-blur-md p-5 rounded-2xl border border-gold-200/70 shadow-sm">
+                    <p class="font-serif italic text-burgundy-900 text-base mb-2">"Eagerly waiting to celebrate your ring ceremony and auspicious day at Brindavanam Halls!"</p>
+                    <div class="flex items-center justify-between text-xs text-stone-500">
+                        <span class="font-semibold text-stone-700">Praveen &amp; Friends</span>
+                        <span>Friends</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHARE & FORWARD SECTION -->
+    <section class="py-16 px-4 bg-gradient-to-t from-gold-100/50 to-transparent">
+        <div class="max-w-xl mx-auto text-center">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-sm border border-gold-300 text-gold-600 mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+            </div>
+            <h3 class="font-serif text-3xl text-burgundy-900 mb-2">Share This Invitation</h3>
+            <p class="text-stone-600 text-sm mb-6">Forward this digital invitation to family members and friends via WhatsApp or copy link.</p>
+
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <button onclick="shareOnWhatsApp()" class="flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-medium text-sm shadow-md transition-all hover:scale-105">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.026.602 1.761.884 2.806.884 3.181 0 5.767-2.586 5.768-5.766.001-3.18-2.585-5.767-5.768-5.767zm3.364 8.243c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.027-.478-1.572-.649-2.58-2.247-2.658-2.352-.078-.105-.638-.85-.638-1.621 0-.771.405-1.15.549-1.306.144-.155.312-.194.417-.194.104 0 .208.001.298.006.096.005.224-.037.351.268.13.312.443 1.08.482 1.158.039.078.065.17.013.275-.052.104-.078.17-.156.261-.078.091-.164.204-.234.275-.078.078-.16.163-.069.319.091.156.403.666.866 1.077.596.53 1.098.694 1.254.772.156.078.247.065.338-.039.091-.104.39-.456.494-.612.104-.156.208-.13.351-.078.143.052.909.429 1.065.507.156.078.26.117.298.182.039.066.039.378-.105.783z"/>
+                    </svg>
+                    <span>Share on WhatsApp</span>
+                </button>
+
+                <button onclick="copyInviteLink()" class="flex items-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-gold-50 text-stone-700 font-medium text-sm border border-gold-300 shadow-sm transition-all hover:scale-105">
+                    <svg class="w-4 h-4 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                    <span id="copyLinkBtnText">Copy Invitation Link</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 px-4 bg-burgundy-900 text-stone-300 border-t border-gold-500/30 text-center">
+        <div class="max-w-md mx-auto">
+            <h4 class="font-serif text-3xl font-light text-gold-300 mb-2">Sai Kumar &amp; Saritha</h4>
+            <p class="text-xs uppercase tracking-[0.25em] text-gold-400/80 mb-6 font-medium">December 19, 2026 &bull; Brindavanam Function Halls</p>
+            <div class="w-12 h-px bg-gold-500/40 mx-auto mb-6"></div>
+            <p class="text-xs text-stone-400 font-light leading-relaxed">
+                Thank you for being an indispensable part of our lives. We eagerly await celebrating our special day in your warm presence.
+            </p>
+        </div>
+    </footer>
+
+    <!-- CALENDAR MODAL -->
+    <div id="calendarModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl border border-gold-300 text-center relative transform transition-transform scale-95 duration-200" id="calendarModalContent">
+            <button onclick="closeCalendarModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 p-1">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="w-12 h-12 rounded-full bg-gold-100 text-gold-700 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <h4 class="font-serif text-2xl text-burgundy-900 mb-1">Save the Date</h4>
+            <p class="text-stone-500 text-xs mb-6">Choose your preferred calendar</p>
+            
+            <div class="space-y-3">
+                <a id="googleCalLink" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-burgundy-900 text-white font-medium text-xs hover:bg-burgundy-800 transition">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12c6.627 0 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.536-.196 1.006.128.832.955z"/></svg>
+                    <span>Google Calendar</span>
+                </a>
+                <button onclick="downloadICS()" class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-gold-50 text-gold-900 border border-gold-300 font-medium text-xs hover:bg-gold-100 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    <span>Apple / Outlook (.ics file)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-burgundy-900 text-white px-5 py-3 rounded-2xl shadow-2xl border border-gold-400 flex items-center gap-3">
+            <span class="text-gold-300 text-sm">✦</span>
+            <span id="toastMsg" class="text-xs font-medium">Link copied to clipboard!</span>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // TARGET DATE: Saturday, December 19, 2026 at 08:00 AM IST
+        const ceremonyDate = new Date('December 19, 2026 08:00:00').getTime();
+
+        // 1. COUNTDOWN TIMER
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = ceremonyDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').innerText = "00";
+                document.getElementById('hours').innerText = "00";
+                document.getElementById('minutes').innerText = "00";
+                document.getElementById('seconds').innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 2. RSVP FORM SUBMISSION
+        function handleRSVPSubmit(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('guestName').value.trim();
+            const email = document.getElementById('guestEmail').value.trim();
+            const phone = document.getElementById('guestPhone').value.trim();
+            const attendance = document.querySelector('input[name="attendance"]:checked').value;
+            const count = document.getElementById('guestCount').value;
+            const dietary = document.getElementById('dietary').value.trim();
+            const message = document.getElementById('guestMessage').value.trim();
+
+            const rsvpData = { name, email, phone, attendance, count, dietary, message, timestamp: new Date().toISOString() };
+            localStorage.setItem('sai_saritha_rsvp', JSON.stringify(rsvpData));
+
+            launchBurstSparkles();
+
+            if (message) {
+                appendWishToFeed(name, message);
+            }
+
+            document.getElementById('rsvpForm').classList.add('hidden');
+            const successCard = document.getElementById('rsvpSuccessCard');
+            successCard.classList.remove('hidden');
+
+            document.getElementById('successGreeting').innerText = `Thank you, ${name}!`;
+            if (attendance === 'declined') {
+                document.getElementById('successSummary').innerText = "We are touched by your heartfelt thoughts and appreciate you letting us know!";
+            } else {
+                document.getElementById('successSummary').innerText = `Your RSVP for ${count} guest(s) is confirmed. We look forward to receiving your blessings at Brindavanam Function Halls!`;
+            }
+
+            showToast("RSVP sent successfully! Thank you.");
+        }
+
+        function resetRSVPForm() {
+            document.getElementById('rsvpForm').classList.remove('hidden');
+            document.getElementById('rsvpSuccessCard').classList.add('hidden');
+        }
+
+        function appendWishToFeed(author, message) {
+            const feed = document.getElementById('wishesFeed');
+            const card = document.createElement('div');
+            card.className = "bg-white/80 backdrop-blur-md p-5 rounded-2xl border border-gold-300 shadow-luxury transition-all transform";
+            card.innerHTML = `
+                <p class="font-serif italic text-burgundy-900 text-base mb-2">"${escapeHtml(message)}"</p>
+                <div class="flex items-center justify-between text-xs text-stone-500">
+                    <span class="font-semibold text-stone-800">${escapeHtml(author)}</span>
+                    <span class="text-gold-700 font-medium">Just now</span>
+                </div>
+            `;
+            feed.prepend(card);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.innerText = text;
+            return div.innerHTML;
+        }
+
+        // 3. CALENDAR GENERATION
+        function initGoogleCalLink() {
+            const title = encodeURIComponent("Sai Kumar & Saritha's Engagement & Ring Ceremony");
+            const details = encodeURIComponent("Engagement and Sacred Ring Ceremony of Sai Kumar & Saritha. Muhurtham starts at 08:00 AM followed by traditional lunch.");
+            const location = encodeURIComponent("Brindavanam Function Halls");
+            // Dec 19, 2026, 08:00 AM IST to 02:00 PM IST (UTC 02:30 to 08:30)
+            const dates = "20261219T023000Z/20261219T083000Z";
+            const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
+            document.getElementById('googleCalLink').href = gCalUrl;
+        }
+
+        function addToCalendarModal() {
+            const modal = document.getElementById('calendarModal');
+            const content = document.getElementById('calendarModalContent');
+            modal.classList.remove('pointer-events-none', 'opacity-0');
+            modal.classList.add('opacity-100');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }
+
+        function closeCalendarModal() {
+            const modal = document.getElementById('calendarModal');
+            const content = document.getElementById('calendarModalContent');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-100');
+            content.classList.add('scale-95');
+            content.classList.remove('scale-100');
+        }
+
+        function downloadICS() {
+            const icsData = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Sai Kumar & Saritha//Engagement Ceremony//EN',
+                'BEGIN:VEVENT',
+                'UID:sai-saritha-engagement-2026@celebration.wedding',
+                'DTSTAMP:20261219T000000Z',
+                'DTSTART:20261219T023000Z',
+                'DTEND:20261219T083000Z',
+                'SUMMARY:Sai Kumar & Saritha - Engagement & Ring Ceremony',
+                'DESCRIPTION:Engagement & Ring Ceremony (Muhurtham at 08:00 AM) at Brindavanam Function Halls.',
+                'LOCATION:Brindavanam Function Halls',
+                'STATUS:CONFIRMED',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+
+            const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.setAttribute('download', 'Sai_Kumar_Saritha_Engagement.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            closeCalendarModal();
+            showToast("Calendar file (.ics) downloaded!");
+        }
+
+        // 4. SHARING & CLIPBOARD
+        function copyVenueAddress() {
+            const text = "Brindavanam Function Halls (https://www.bing.com/maps?q=Brindavanam+Function+Halls&ss=ypid.YN873A9480D24E594C)";
+            copyTextToClipboard(text);
+            const label = document.getElementById('copyAddrLabel');
+            label.innerText = "Copied!";
+            setTimeout(() => { label.innerText = "Copy Address"; }, 2500);
+            showToast("Venue details copied to clipboard!");
+        }
+
+        function copyInviteLink() {
+            const url = window.location.href;
+            copyTextToClipboard(url);
+            const label = document.getElementById('copyLinkBtnText');
+            label.innerText = "Link Copied!";
+            setTimeout(() => { label.innerText = "Copy Invitation Link"; }, 2500);
+            showToast("Invitation link copied!");
+        }
+
+        function copyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function shareOnWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const msg = encodeURIComponent("✨ You are cordially invited to celebrate the Engagement & Ring Ceremony of Sai Kumar & Saritha on Saturday, December 19, 2026 (08:00 AM onwards) at Brindavanam Function Halls! Please find the details and RSVP here: ") + url;
+            window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
+        }
+
+        function openShareSheet() {
+            if (navigator.share) {
+                navigator.share({
+                    title: "Sai Kumar & Saritha - Engagement Ceremony",
+                    text: "Join us for the Engagement Ceremony of Sai Kumar & Saritha on Saturday, December 19, 2026!",
+                    url: window.location.href,
+                }).catch(() => {});
+            } else {
+                copyInviteLink();
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            const msgEl = document.getElementById('toastMsg');
+            msgEl.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // 5. BACKGROUND MELODY (TONE.JS)
+        let isAudioPlaying = false;
+        let synth = null;
+        let melodyLoop = null;
+
+        async function toggleBackgroundMusic() {
+            const iconOn = document.getElementById('musicIconOn');
+            const iconOff = document.getElementById('musicIconOff');
+            const label = document.getElementById('musicBtnLabel');
+
+            if (!isAudioPlaying) {
+                try {
+                    await Tone.start();
+                    if (!synth) {
+                        synth = new Tone.PolySynth(Tone.Synth, {
+                            oscillator: { type: 'sine' },
+                            envelope: {
+                                attack: 0.05,
+                                decay: 1.2,
+                                sustain: 0.1,
+                                release: 1.8
+                            }
+                        }).toDestination();
+                        synth.volume.value = -18;
+
+                        const chords = [
+                            ["D4", "F#4", "A4", "C#5"],
+                            ["B3", "D4", "F#4", "A4"],
+                            ["G3", "B3", "D4", "F#4"],
+                            ["A3", "C#4", "E4", "A4"]
+                        ];
+
+                        let chordIndex = 0;
+                        melodyLoop = new Tone.Loop(time => {
+                            const chord = chords[chordIndex % chords.length];
+                            chord.forEach((note, i) => {
+                                synth.triggerAttackRelease(note, "4n", time + (i * 0.22));
+                            });
+                            chordIndex++;
+                        }, "2m").start(0);
+                    }
+
+                    Tone.Transport.start();
+                    isAudioPlaying = true;
+                    iconOn.classList.remove('hidden');
+                    iconOff.classList.add('hidden');
+                    label.innerText = "Playing";
+                    showToast("Playing morning celebratory chimes ♪");
+                } catch (e) {
+                    console.log("Audio not supported or blocked", e);
+                }
+            } else {
+                Tone.Transport.stop();
+                isAudioPlaying = false;
+                iconOn.classList.add('hidden');
+                iconOff.classList.remove('hidden');
+                label.innerText = "Music";
+            }
+        }
+
+        // 6. CANVAS PARTICLES & SPARKLES
+        const canvas = document.getElementById('sparkleCanvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const particleCount = 38;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 2.2 + 0.8,
+                speedY: Math.random() * 0.5 + 0.2,
+                speedX: (Math.random() - 0.5) * 0.4,
+                alpha: Math.random() * 0.7 + 0.2,
+                osc: Math.random() * Math.PI * 2,
+                color: Math.random() > 0.4 ? 'rgba(212, 175, 55,' : 'rgba(235, 185, 195,'
+            });
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+            for (let p of particles) {
+                p.y += p.speedY;
+                p.x += Math.sin(p.osc) * 0.4 + p.speedX;
+                p.osc += 0.02;
+
+                if (p.y > height) {
+                    p.y = -10;
+                    p.x = Math.random() * width;
+                }
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `${p.color} ${p.alpha})`;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = 'rgba(212, 175, 55, 0.4)';
+                ctx.fill();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        function launchBurstSparkles() {
+            for (let i = 0; i < 40; i++) {
+                particles.push({
+                    x: width / 2,
+                    y: height / 2,
+                    radius: Math.random() * 3 + 1.5,
+                    speedY: (Math.random() - 0.5) * 6,
+                    speedX: (Math.random() - 0.5) * 6,
+                    alpha: 1,
+                    osc: 0,
+                    color: Math.random() > 0.5 ? 'rgba(218, 165, 32,' : 'rgba(123, 29, 57,'
+                });
+            }
+        }
+
+        window.onload = function() {
+            initGoogleCalLink();
+        };
+    </script>
+</body>
+</html>
